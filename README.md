@@ -83,7 +83,7 @@ ViewModels (LibraryViewModel • YouTubeViewModel • NowPlayingViewModel)
 
 ### Requirements
 - **Android Studio** (or Android SDK with **Compile SDK 36**, **Min SDK 24**)
-- **JDK 17** or newer
+- **JDK 21** (required for Android SDK 36 / Robolectric unit tests)
 - **Gradle 9.3.1**
 
 ### Build Locally
