@@ -31,8 +31,40 @@ jobs:
         with:
           gradle-version: 9.3.1
 
-      - name: Decode debug keystore
-        run: tr -d '\r\n' < debug.keystore.base64 | base64 -d > debug.keystore
+      - name: Prepare debug keystore
+        run: |
+          if [ -f debug.keystore ] && keytool -list -keystore debug.keystore -storepass android >/dev/null 2>&1; then
+            echo "Using existing valid debug.keystore"
+            exit 0
+          fi
+
+          if [ -f debug.keystore.base64 ]; then
+            tr -d '[:space:]' < debug.keystore.base64 | base64 -d > debug.keystore 2>/dev/null || true
+            if keytool -list -keystore debug.keystore -storepass android >/dev/null 2>&1; then
+              echo "Decoded valid debug.keystore from debug.keystore.base64"
+              exit 0
+            fi
+            if gzip -t debug.keystore >/dev/null 2>&1; then
+              gzip -dc debug.keystore > debug.keystore.tmp && mv debug.keystore.tmp debug.keystore
+              if keytool -list -keystore debug.keystore -storepass android >/dev/null 2>&1; then
+                echo "Decoded gzipped debug.keystore from debug.keystore.base64"
+                exit 0
+              fi
+            fi
+            echo "Warning: debug.keystore.base64 did not produce a valid keystore; generating a fresh debug.keystore for CI."
+            rm -f debug.keystore debug.keystore.tmp
+          fi
+
+          keytool -genkeypair -noprompt \
+            -keystore debug.keystore \
+            -storetype PKCS12 \
+            -storepass android \
+            -alias androiddebugkey \
+            -keypass android \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 10000 \
+            -dname "CN=Android Debug,O=Android,C=US"
 
       - name: Run unit tests
         run: gradle :app:testDebugUnitTest
