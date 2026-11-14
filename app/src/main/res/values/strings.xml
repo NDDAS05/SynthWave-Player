@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SynthWave</string>
+    <string name="nav_local_library">Local Library</string>
+    <string name="nav_youtube_music">YouTube Music</string>
+    <string name="permission_card_title">Unlock Your Audio Universe</string>
+    <string name="permission_card_body">Grant audio library access to auto-scan songs across internal storage and SD cards, plus microphone buffer permission for 60fps real-time FFT RGB visualizers.</string>
+    <string name="permission_grant_button">Grant Permissions</string>
+    <string name="permission_audio_only_button">Scan Library Only</string>
+    <string name="search_local_hint">Search songs, artists, albums, folders...</string>
+    <string name="search_youtube_hint">Search YouTube Music tracks...</string>
+    <string name="visualizer_mode_ring">RGB Ring</string>
+    <string name="visualizer_mode_cloth">Cloth Wave</string>
+    <string name="visualizer_fft_active">Live FFT</string>
+    <string name="visualizer_bpm_active">BPM Beat</string>
+    <string name="lyrics_title">Lyrics &amp; Transcript</string>
+    <string name="lyrics_import_button">Paste / Import Lyrics</string>
+    <string name="lyrics_empty_hint">No .lrc, .txt, or embedded USLT lyrics found for this track. Tap below to paste or import lyrics.</string>
+    <string name="youtube_settings_title">YouTube Data API v3</string>
+    <string name="youtube_api_key_label">YouTube API Key</string>
+    <string name="youtube_api_key_hint">Enter your Google Cloud YouTube Data API v3 key</string>
+    <string name="playlist_create_title">Create Playlist</string>
+    <string name="playlist_name_hint">Playlist name</string>
+    <string name="queue_title">Up Next Queue</string>
+</resources>

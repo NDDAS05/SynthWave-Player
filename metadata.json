@@ -1,0 +1,6 @@
+{
+  "name": "SynthWave",
+  "description": "Native Android music player with Media3 background playback, real-time 60fps RGB audio visualizers, synchronized LRC/USLT lyrics, and YouTube Music streaming.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
